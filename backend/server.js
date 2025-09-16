@@ -1,11 +1,4 @@
-/*
-const express = require('express');
-const multer = require('multer');
-const Tesseract = require('tesseract.js');
-const PDFDocument = require('pdfkit');
-const fs = require('fs');
-const path = require('path');
-const cors = require('cors');*/
+
 import express from 'express';
 import multer from 'multer';
 import Tesseract from 'tesseract.js';
@@ -13,20 +6,33 @@ import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
-
+import { fileURLToPath } from 'url';
 
 import { formatOCRText } from './functions/formatOCRText.js';
 
+
+// __dirname en ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 app.use(cors());
+
+// Frontend compilado. Necesario para produicción
+app.use(express.static(path.join(__dirname, "dist")));
 
 // Carpeta temporal para subir imágenes
 const upload = multer({ dest: 'uploads/' });
 
 // Endpoint GET de prueba
-app.get('/', (req, res) => {
+app.get('/ping', (req, res) => {
     res.send('Servidor funcionando! Usa POST /procesar para subir imágenes.');
 });
+
+// Para cualquier otra ruta, devolvemos index.html (soporte para React Router). Necesario para producción
+app.get("*", (req,res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+}); 
 
 // Endpoint POST para procesar imagen
 app.post('/procesar', upload.single('imagen'), async (req, res) => {
@@ -56,5 +62,5 @@ app.post('/procesar', upload.single('imagen'), async (req, res) => {
 
 
 // Iniciar servidor
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor escuchando en el puerto ${PORT}`));
