@@ -8,3 +8,5 @@ export { Textarea } from "./Textarea/Textarea";
 export { default as UploadFiles } from "./UploadFiles/UploadFiles";
 export { InputButton } from "./InputButton/InputButton";
 export { Header } from "./Header/Header";
+export { MainContent } from "./MainContent/MainContent";
+export { CopyToClipboard } from "./CopyToClipboard/CopyToClipboard";

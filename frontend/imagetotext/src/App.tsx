@@ -1,11 +1,12 @@
 import './App.css'
-import  ORC  from "./components/OCR/OCR"
+import { Header, MainContent } from './components'
 
 function App() {
 
   return (
     <>
-      <ORC />
+      <Header />
+      <MainContent />
     </>
   )
 }

@@ -1,0 +1,52 @@
+import { useState } from "react";
+import { UploadFiles, SendFiles, ProcessResponse, Input, Textarea, Button, DownloadPDF, 
+  InputButton, LabelButton, CopyToClipboard
+} from "../index"
+import "./MainContent.css"
+import { ToastProvider } from "../../hooks/ToastMesagge/useToast";
+
+export const MainContent = () => {
+  const [text, setText] = useState("");
+  const [showTextarea, setShowTextarea] = useState(false);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formData = UploadFiles({ type: "imagen", e });
+    const res = await SendFiles(formData);
+    await ProcessResponse({ res, setText });
+
+    setShowTextarea(true);
+  };
+
+  const handleDownload = () => {
+    DownloadPDF(text);
+  }
+
+  const handleCopy = () => {
+    CopyToClipboard(text);
+  }
+
+  return (
+    <>
+      <div className="upload-container">
+        <InputButton>
+          <LabelButton htmlFor={"upload-img"}>Seleccionar archivo</LabelButton>
+          {/* Este input hace que si estoy en la PC, pueda seleccionar un archivo tipo imagen, si estoy en el 
+            celular, puedo usar la cámara */}
+          <Input id="upload-img" type="file" accept="image/*" capture="environment" onChange={handleFileChange} />
+          { /* <Input id="upload-img" type="file" accept="image/*" onChange={handleFileChange} /> */}
+        </InputButton>
+        {showTextarea && (
+          <>
+            <Textarea id="textarea" value={text} onChange={e => setText(e.target.value)} />
+            <div className="buttons">
+              <Button onClick={handleDownload} label="Descargar PDF" />
+              <ToastProvider>
+                <Button onClick={handleCopy} toastMessage="Texto copiado" label="Copiar"/>
+              </ToastProvider>
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  );
+}
