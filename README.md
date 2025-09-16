@@ -17,6 +17,6 @@ Esta aplicación permite subir una imagen que contenga texto, extraerlo como tex
 
 **Ezequiel**
 
-- GitHub: [@eze-belmonte](https://github.com/eze-belmonte)
+- GitHub: [@eze-belmonte](https://github.com/ezeBelmonte)
 - Instagram: [@eze.belmonte](https://instagram.com/eze.belmonte)
 - LinkedIn: [Belmonte Ezequiel](https://linkedin.com/in/ezequiel-belmonte)
