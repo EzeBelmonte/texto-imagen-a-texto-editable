@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { useToast } from "../../hooks";
 import { UploadFiles, SendFiles, ProcessResponse, Input, Textarea, Button, DownloadPDF, 
   InputButton, LabelButton, CopyToClipboard
 } from "../index"
 import "./MainContent.css"
-import { ToastProvider } from "../../hooks/ToastMesagge/useToast";
 
 export const MainContent = () => {
   const [text, setText] = useState("");
@@ -25,6 +25,8 @@ export const MainContent = () => {
     CopyToClipboard(text);
   }
 
+  const { showToast } = useToast();
+
   return (
     <>
       <div className="upload-container">
@@ -40,9 +42,13 @@ export const MainContent = () => {
             <Textarea id="textarea" value={text} onChange={e => setText(e.target.value)} />
             <div className="buttons">
               <Button onClick={handleDownload} label="Descargar PDF" />
-              <ToastProvider>
-                <Button onClick={handleCopy} toastMessage="Texto copiado" label="Copiar"/>
-              </ToastProvider>
+              <Button onClick={(e) => {
+                handleCopy();
+                // @ts-ignore 
+                showToast("Texto copiado", e.clientX, e.clientY);
+                }} 
+                label="Copiar" 
+              />
             </div>
           </>
         )}

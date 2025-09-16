@@ -1,0 +1,19 @@
+.custom-toast {
+  background-color: rgb(18, 133, 199);
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  font-weight: 500;
+  position: absolute;
+  z-index: 9999;
+
+  opacity: 0;
+  transform: translate(10px, -10px) scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* clase para cuando sea visible */
+.custom-toast.show {
+  opacity: 1;
+  transform: translate(10px, -10px) scale(1);
+}

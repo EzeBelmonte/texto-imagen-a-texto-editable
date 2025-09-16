@@ -1,23 +1,21 @@
-import { useToast } from "../../hooks/index"; // Hooks personalizados
-import "./Button.css"
+import "./Button.css";
 
 interface ButtonProps {
-  label: string,
-  onClick: () => void,
-  toastMessage?: string
+  label: string;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  toastMessage?: string; // opcional, solo si queremos toast
+  showToast?: (msg: string) => void; // inyectamos el hook desde afuera
 }
 
-export const Button = ({ label, onClick, toastMessage }: ButtonProps) => {
-  const { showToast } = useToast();
+export const Button = ({ label, onClick, toastMessage, showToast }: ButtonProps) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    onClick?.(e); // ejecuta la función principal
 
-  const handleClick = () => {
-    onClick();
-    if (toastMessage) showToast(toastMessage)
+    // si recibimos toastMessage y showToast, mostramos el toast
+    if (toastMessage && showToast) {
+      showToast(toastMessage);
+    }
   };
 
-  return (
-    <button className="button" onClick={handleClick}>
-      {label}
-    </button>
-  )
-}
+  return <button className="custom-button" onClick={handleClick}>{label}</button>;
+};

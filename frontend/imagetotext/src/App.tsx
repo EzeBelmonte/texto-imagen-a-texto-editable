@@ -1,12 +1,15 @@
 import './App.css'
-import { Header, MainContent } from './components'
+import { Header, MainContent } from './components';
+import { ToastProvider } from './hooks/ToastMesagge/useToast';
 
 function App() {
 
   return (
     <>
       <Header />
-      <MainContent />
+      <ToastProvider>
+        <MainContent />
+      </ToastProvider>
     </>
   )
 }
