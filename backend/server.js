@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
 import { formatOCRText } from './functions/formatOCRText.js';
 
@@ -41,6 +42,14 @@ app.post('/procesar', upload.single('imagen'), async (req, res) => {
     const imagenPath = req.file.path;
 
     try {
+
+        await sharp(imagenPath)
+            .resize({ width: 1000 }) // escalar para mejorar OCR en fotos chicas
+            .grayscale()
+            .normalize() // mejora contraste
+            .threshold(160) // probá 140-180
+            .toFile(processedPath);
+
         // OCR con Tesseract
         const { data: { text } } = await Tesseract.recognize(imagenPath, 'spa');
 
@@ -48,7 +57,8 @@ app.post('/procesar', upload.single('imagen'), async (req, res) => {
         const formattedText = formatOCRText(text);
 
         // Eliminar archivo temporal
-        if (fs.existsSync(imagenPath)) fs.unlinkSync(imagenPath);
+        try { if (fs.existsSync(imagenPath)) fs.unlinkSync(imagenPath); } catch {}
+        try { if (fs.existsSync(processedPath)) fs.unlinkSync(processedPath); } catch {}
 
         // Devolver texto en JSON
         res.json({ text: formattedText });
