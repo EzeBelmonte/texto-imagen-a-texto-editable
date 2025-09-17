@@ -1,0 +1,47 @@
+.textarea {
+  width: 500px;
+  height: 200px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.05em;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 5px;
+
+  resize: none;
+  overflow-y: auto;
+}
+
+
+/* Media query dentro del mismo CSS */
+
+/* ===== (≤ 768px) ===== */
+@media (max-width: 768px) {
+  .textarea{
+    width: 600px;
+    height: 200px;
+    font-size: 1.4em;
+  }
+}
+
+
+/* ===== (≤ 480px) ===== */
+@media (max-width: 480px) {
+  .textarea{
+    width: 700px;
+    height: 200px;
+    font-size: 1.5em;
+    font-weight: 400;
+  }
+
+  textarea::-webkit-scrollbar {
+    width: 12px; /* grosor de la barra vertical */
+  }
+  textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.5); /* color del "thumb" */
+    border-radius: 6px; /* esquinas redondeadas */
+  }
+  textarea::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1); /* fondo del track */
+    border-radius: 6px;
+  }
+}

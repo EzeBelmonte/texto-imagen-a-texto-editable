@@ -9,8 +9,8 @@ async function SendFiles(formData: FormData | null): Promise<Response | null> {
   
   if (!formData) return null;
 
-  //const res = await fetch('http://localhost:3000/procesar', { <-- Para probar en local
-  const res = await fetch('/procesar', { // Para producción
+  const res = await fetch('http://localhost:3000/procesar', { //<-- Para probar en local
+  //const res = await fetch('/procesar', { // Para producción
     method: 'POST',
     body: formData
   });

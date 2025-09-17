@@ -19,7 +19,7 @@ const app = express();
 app.use(cors());
 
 // Frontend compilado. Necesario para produicción
-app.use(express.static(path.join(__dirname, "dist")));
+//app.use(express.static(path.join(__dirname, "dist")));
 
 // Carpeta temporal para subir imágenes
 const upload = multer({ dest: 'uploads/' });
@@ -30,7 +30,7 @@ app.get('/ping', (req, res) => {
 });
 
 // Para cualquier otra ruta, devolvemos index.html (soporte para React Router). Necesario para producción
-app.get("*", (req,res) => {
+app.get((req,res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 }); 
 

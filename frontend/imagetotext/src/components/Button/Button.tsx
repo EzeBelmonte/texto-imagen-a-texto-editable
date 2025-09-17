@@ -1,4 +1,4 @@
-import "./Button.css";
+import css from "./Button.module.css";
 
 interface ButtonProps {
   label: string;
@@ -17,5 +17,5 @@ export const Button = ({ label, onClick, toastMessage, showToast }: ButtonProps)
     }
   };
 
-  return <button className="custom-button" onClick={handleClick}>{label}</button>;
+  return <button className={css.button} onClick={handleClick}>{label}</button>;
 };

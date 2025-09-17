@@ -1,4 +1,4 @@
-import "./LabelButton.css"
+import css from "./LabelButton.module.css"
 
 interface LabelButtonProps {
   htmlFor: string,
@@ -7,6 +7,6 @@ interface LabelButtonProps {
 
 export const LabelButton = ({ htmlFor, children }: LabelButtonProps) => {
   return (
-    <label className="label-button" htmlFor={htmlFor}>{children}</label>
+    <label className={css.label_button} htmlFor={htmlFor}>{children}</label>
   )
 }

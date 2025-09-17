@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import "./InputButton.css"
+import css from "./InputButton.module.css"
 
 interface InputButtonProps {
   children: ReactNode,
@@ -7,7 +7,7 @@ interface InputButtonProps {
 
 export const InputButton = ({ children }: InputButtonProps) => {
   return (
-    <div className="input-button">
+    <div className={css.input_button}>
       {children}
     </div>
   )

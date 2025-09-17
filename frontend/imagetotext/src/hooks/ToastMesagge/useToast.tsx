@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import "./useToast.css"
+import css from "./useToast.module.css";
 
 interface ToastContextType {
   showToast: (msg: string, x: number, y: number) => void;
@@ -30,7 +30,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
     <ToastContext.Provider value={{ showToast }}>
       {children}
       {toast && (
-        <div className={`custom-toast ${toast.visible ? "show" : ""}`} 
+        <div className={`${css.custom_toast} ${toast.visible ? css.show : ""}`} 
           style={{ top: toast.y + "px", left: toast.x + "px" }}
         >
           {toast.message}

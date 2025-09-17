@@ -1,0 +1,40 @@
+.header {
+  margin-bottom: 50px;
+}
+
+.header_h1{
+  font-size: 4.2em;
+  margin: 0;
+}
+
+.header_h2 {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Media query dentro del mismo CSS */
+/* ===== (≤ 768px) ===== */
+@media (max-width: 768px) {
+  .header_h1{
+    font-size: 4.2em;
+  }
+
+  .header_h2 {
+    font-size: 1.3em;
+    font-weight: 400;
+  }
+}
+
+
+/* ===== (≤ 480px) ===== */
+@media (max-width: 480px) {
+  .header_h1{
+    font-size: 3.8em;
+  }
+
+  .header_h2 {
+    font-size: 1.3em;
+    font-weight: 400;
+  }
+}
