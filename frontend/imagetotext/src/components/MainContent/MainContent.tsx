@@ -37,7 +37,7 @@ export const MainContent = () => {
           <Input id="upload-img" hidden={true} type="file" accept="image/*" capture="environment" onChange={handleFileChange} />
           { /* <Input id="upload-img" type="file" accept="image/*" onChange={handleFileChange} /> */}
         </InputButton>
-        {showTextarea && (
+        
           <>
             <Textarea id="textarea" value={text} onChange={e => setText(e.target.value)} />
             <div className={css.buttons}>
@@ -51,7 +51,7 @@ export const MainContent = () => {
               />
             </div>
           </>
-        )}
+        
       </div>
     </>
   );

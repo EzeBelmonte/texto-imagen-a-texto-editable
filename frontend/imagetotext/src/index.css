@@ -2,8 +2,25 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.9);
+  --bg-color: rgb(44, 44, 44);
+
+  /* buttons */
+  --btn-bg-color: rgb(26, 26, 26);
+  --btn-text-color: rgba(255, 255, 255, 0.9);
+  --btn-border-color: rgba(255, 255, 255, 0.4);
+  --btn-hover-border-color: rgb(100, 108, 255);
+
+  /* label buttons */
+  --label-btn-bg-color: rgb(46, 46, 46);
+  --label-btn-text-color: rgba(255, 255, 255, 0.9);
+  --label-btn-border-color: rgba(255, 255, 255, 0.5);
+  --label-hover-btn-bg-color: rgb(61, 61, 61);
+  --label-hover-btn-border-color: rgba(255, 255, 255, 0.2);
+
+  /* textarea */
+  --texarea-bg-color: rgb(70, 70, 70);
+  --textarea-text-color: rgba(255, 255, 255, 0.9);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -11,16 +28,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
 
 body {
+  background-color: var(--bg-color);
   margin: 0;
   padding: 0;
   display: flex;
@@ -33,13 +43,25 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+    --text-color: #213547;
+    --bg-color: #ffffff;
+
+    
+    /* buttons */
+    --btn-bg-color: rgb(235, 235, 235);
+    --btn-text-color: rgba(29, 29, 29, 0.9);
+    --btn-border-color: rgba(0, 0, 0, 0.4);
+    --btn-hover-border-color: rgb(95, 13, 163);
+
+    /* label buttons */
+    --label-btn-bg-color: rgb(240, 240, 240);
+    --label-btn-text-color: rgba(26, 26, 26, 0.9);
+    --label-btn-border-color: rgba(24, 24, 24, 0.5);
+    --label-hover-btn-bg-color: rgb(228, 228, 228);
+    --label-hover-btn-border-color: rgba(0, 0, 0, 0.205);
+
+    /* textarea */
+    --texarea-bg-color: rgb(236, 236, 236);
+    --textarea-text-color: rgba(44, 44, 44, 0.9);
   }
 }
